@@ -3,25 +3,30 @@
  * *@author trsoliu
  * *@describe vue-cli 3.x配置文件
  */
-const path = require("path");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin; //Webpack包文件分析器
 
 module.exports = {
   //基本路径
-  publicPath: "./",
-  outputDir: "mcdonalds",
+  publicPath: './',
+  outputDir: 'mcdonalds',
   lintOnSave: true,
-  assetsDir: "static",
+  assetsDir: 'static',
   pages: undefined,
   runtimeCompiler: false,
-  parallel: require("os").cpus().length > 1,
+  parallel: require('os').cpus().length > 1,
   productionSourceMap: false,
-  chainWebpack: config => {
-    config.resolve.alias
-      .set('src', path.join(__dirname, 'src'))
+  chainWebpack: (config) => {
+    config.resolve.alias.set('src', path.join(__dirname, 'src'));
+    config.module
+      .rule('graphql')
+      .test(/\.(graphql|gql)$/)
+      .use('graphql-tag/loader')
+      .loader('graphql-tag/loader')
+      .end();
   },
-  configureWebpack: config => {
+  configureWebpack: (config) => {
     //生产and测试环境
     let pluginsPro = [
       // new CompressionPlugin({ //文件开启Gzip，也可以通过服务端(如：nginx)(https://github.com/webpack-contrib/compression-webpack-plugin)
@@ -32,7 +37,7 @@ module.exports = {
       //     minRatio: 0.8,
       // }),
       //	Webpack包文件分析器(https://github.com/webpack-contrib/webpack-bundle-analyzer)
-      new BundleAnalyzerPlugin()
+      new BundleAnalyzerPlugin(),
     ];
     //开发环境
     let pluginsDev = [
@@ -42,7 +47,7 @@ module.exports = {
       //     enable: true // 发布代码前记得改回 false
       // }),
     ];
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV === 'production') {
       // 为生产环境修改配置...process.env.NODE_ENV !== 'development'
       config.plugins = [...config.plugins, ...pluginsPro];
     } else {
@@ -56,7 +61,7 @@ module.exports = {
     // 是否使用css分离插件
     extract: true,
     // 开启 CSS source maps，一般不建议开启
-    sourceMap: false
+    sourceMap: false,
     // css预设器配置项
     // loaderOptions: {
     //     sass: {
@@ -80,7 +85,6 @@ module.exports = {
     hotOnly: true, // 热更新
     compress: true,
     hot: true,
-
   },
 
   pluginOptions: {
