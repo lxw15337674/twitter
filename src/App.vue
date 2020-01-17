@@ -1,34 +1,13 @@
 <template>
-  <div id="app" style="">
-    <img src="./assets/logo.png" />
-    <div>
-      <el-button>el-button</el-button>
-    </div>
-    <el-image src="/img/logo.png" lazy :preview-src-list="[]" />
-
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id="app">
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import 'src/assets/css/reset.css';
 export default {
-  name: "app",
-  components: {
-    HelloWorld
-  }
+  name: 'app',
+  components: {},
 };
 </script>
-
-<style>
-#app {
-  height: 1500px;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
