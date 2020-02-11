@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div id="app" style="">
     <img src="./assets/logo.png" />
     <div>
@@ -26,13 +27,17 @@
       </span>
     </el-dialog>
     <HelloWorld msg="Welcome to Your Vue.js App" />
+=======
+  <div id="app">
+    <router-view></router-view>
+>>>>>>> e5f8a5c3a6398456df17201fa7a9984323f5cc20
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import 'src/assets/css/reset.css';
 export default {
+<<<<<<< HEAD
   name: "app",
   components: {
     HelloWorld
@@ -51,17 +56,9 @@ export default {
         .catch(_ => {});
     }
   }
+=======
+  name: 'app',
+  components: {},
+>>>>>>> e5f8a5c3a6398456df17201fa7a9984323f5cc20
 };
 </script>
-
-<style>
-#app {
-  height: 1500px;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
